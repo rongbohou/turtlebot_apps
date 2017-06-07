@@ -1,0 +1,22 @@
+<launch>
+
+  <!--                        kinect2 
+     iai_kinect2 to drive, depth image topic: /kinect2/hd/image_depth_rect;/kinect2/qhd/image_depth_rect;/kinect2/sd/image_depth_rect;/kinect2/sd/image_depth_rect
+   -->
+   <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch"/>
+
+  <!-- rplidar, publish /scan -->
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(env TURTLEBOT_MAP_FILE)"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- ORB-SLAM -->
+  <!-- node pkg="my_orbslam" type="my_rgbd" name="my_rgbd" args="/home/bobo/rongbo/catkin_ws/src/my_orbslam/config/ORBvoc.bin /home/bobo/rongbo/catkin_ws/src/my_orbslam/config/kinect2_qhd.yaml true true"/ -->
+
+  <!-- Move base -->
+  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
+
+</launch>
+

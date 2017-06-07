@@ -1,0 +1,10 @@
+<launch>
+  <!--kinect2 : iai_kinect2 to drive -->
+ <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch"/>
+
+ <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+ <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
+
+</launch>
+

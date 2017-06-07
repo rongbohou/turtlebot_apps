@@ -1,0 +1,11 @@
+<launch>
+
+ <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+ 
+ <include file="$(find turtlebot_navigation)/launch/includes/mapping_orbslam/mapping_orbslam.launch.xml">
+      <arg name="scan_topic"  default="/scan" />
+ </include>
+ <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
+
+</launch>
+
